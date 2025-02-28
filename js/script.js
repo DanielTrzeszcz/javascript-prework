@@ -10,6 +10,30 @@ function getMoveName(moveNumber) {
   }
 }
 
+function displayResult(argComputerMove, argPlayerMove) {
+  if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
+    printMessage('Ty wygrywasz!');
+  } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
+    printMessage('Ty wygrywasz!');
+  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
+    printMessage('Ty wygrywasz!');
+  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
+    printMessage('Przegrywasz!');
+  } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień') {
+    printMessage('Przegrywasz!');
+  } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
+    printMessage('Przegrywasz!');
+  } else if (argComputerMove == 'kamień' && argPlayerMove == 'kamień') {
+    printMessage('Remis!');
+  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce') {
+    printMessage('Remis!');
+  } else if (argComputerMove == 'papier' && argPlayerMove == 'papier') {
+    printMessage('Remis!');
+  } else {
+    printMessage('Nie wybrałeś od 1-3 gamoniu!');
+  }
+}
+
 let randomNumber = Math.floor(Math.random() * 3 + 1);
 
 console.log('Wylosowana liczba to: ' + randomNumber);
@@ -46,6 +70,10 @@ if (playerInput == '1') {
 
 printMessage('Twój ruch to: ' + playerMove);
 
+// Wywołanie funkcji displayResult zamiast poprzedniego kodu porównującego ruchy
+displayResult(computerMove, playerMove);
+
+/*
 if (computerMove == 'kamień' && playerMove == 'papier') {
   printMessage('Ty wygrywasz!');
 } else if (computerMove == 'papier' && playerMove == 'nożyce') {
@@ -64,6 +92,9 @@ if (computerMove == 'kamień' && playerMove == 'papier') {
   printMessage('Remis!');
 } else if (computerMove == 'papier' && playerMove == 'papier') {
   printMessage('Remis!');
-} else {
+} else 
+ 
+{
   printMessage('Nie wybrałeś od 1-3 gamoniu!');
 }
+*/
