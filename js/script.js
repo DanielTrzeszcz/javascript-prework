@@ -23,78 +23,36 @@ function displayResult(argComputerMove, argPlayerMove) {
     printMessage('Przegrywasz!');
   } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
     printMessage('Przegrywasz!');
-  } else if (argComputerMove == 'kamień' && argPlayerMove == 'kamień') {
-    printMessage('Remis!');
-  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce') {
-    printMessage('Remis!');
-  } else if (argComputerMove == 'papier' && argPlayerMove == 'papier') {
+  } else if (argComputerMove == argPlayerMove) {
     printMessage('Remis!');
   } else {
-    printMessage('Nie wybrałeś od 1-3 gamoniu!');
+    printMessage('Nie wybrałeś poprawnej wartości!');
   }
 }
 
-let randomNumber = Math.floor(Math.random() * 3 + 1);
-
-console.log('Wylosowana liczba to: ' + randomNumber);
-
-let computerMove = getMoveName(randomNumber);
-
-/*
-if(randomNumber == 1){
-  computerMove = 'kamień';
-} else if (randomNumber == 2) {
-  computerMove = 'papier';
-} else if (randomNumber == 3) {
-  computerMove = 'nożyce';
+function playGame(playerInput) {
+  clearMessages(); {
+    document.getElementById('messages').innerHTML = '';
 }
-*/
+  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  let computerMove = getMoveName(randomNumber);
+  let playerMove = getMoveName(playerInput);
 
-printMessage('Mój ruch to: ' + computerMove);
+  printMessage('Mój ruch to: ' + computerMove);
+  printMessage('Twój ruch to: ' + playerMove);
 
-let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-
-console.log('Gracz wpisał: ' + playerInput);
-
-let playerMove = getMoveName(playerInput);
-
-/*
-if (playerInput == '1') {
-  playerMove = 'kamień';
-} else if (playerInput == '2') {
-  playerMove = 'papier';
-} else if (playerInput == '3') {
-  playerMove = 'nożyce';
+  displayResult(computerMove, playerMove);
 }
-*/
 
-printMessage('Twój ruch to: ' + playerMove);
+// Dodanie listenerów do przycisków
+document.getElementById('play-rock').addEventListener('click', function () {
+  playGame(1);
+});
 
-// Wywołanie funkcji displayResult zamiast poprzedniego kodu porównującego ruchy
-displayResult(computerMove, playerMove);
+document.getElementById('play-paper').addEventListener('click', function () {
+  playGame(2);
+});
 
-/*
-if (computerMove == 'kamień' && playerMove == 'papier') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'papier' && playerMove == 'nożyce') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'nożyce' && playerMove == 'kamień') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'nożyce' && playerMove == 'papier') {
-  printMessage('Przegrywasz!');
-} else if (computerMove == 'papier' && playerMove == 'kamień') {
-  printMessage('Przegrywasz!');
-} else if (computerMove == 'kamień' && playerMove == 'nożyce') {
-  printMessage('Przegrywasz!');
-} else if (computerMove == 'kamień' && playerMove == 'kamień') {
-  printMessage('Remis!');
-} else if (computerMove == 'nożyce' && playerMove == 'nożyce') {
-  printMessage('Remis!');
-} else if (computerMove == 'papier' && playerMove == 'papier') {
-  printMessage('Remis!');
-} else 
- 
-{
-  printMessage('Nie wybrałeś od 1-3 gamoniu!');
-}
-*/
+document.getElementById('play-scissors').addEventListener('click', function () {
+  playGame(3);
+});
