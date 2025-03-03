@@ -1,10 +1,3 @@
-function playGame(playerInput){
-  clearMessages();
-  
-  function buttonClicked(){
-    printMessage('Guzik został kliknięty');
-  }
-
 function getMoveName(moveNumber) {
   if (moveNumber == 1) {
     return 'kamień';
@@ -18,102 +11,46 @@ function getMoveName(moveNumber) {
 }
 
 function displayResult(argComputerMove, argPlayerMove) {
-  if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
-    printMessage('Ty wygrywasz!');
-  } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
-    printMessage('Ty wygrywasz!');
-  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
-    printMessage('Ty wygrywasz!');
-  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
-    printMessage('Przegrywasz!');
-  } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień') {
-    printMessage('Przegrywasz!');
-  } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
-    printMessage('Przegrywasz!');
-  } else if (argComputerMove == 'kamień' && argPlayerMove == 'kamień') {
+  if (argComputerMove == argPlayerMove) {
     printMessage('Remis!');
-  } else if (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce') {
-    printMessage('Remis!');
-  } else if (argComputerMove == 'papier' && argPlayerMove == 'papier') {
-    printMessage('Remis!');
+  } else if (
+    (argComputerMove == 'kamień' && argPlayerMove == 'papier') ||
+    (argComputerMove == 'papier' && argPlayerMove == 'nożyce') ||
+    (argComputerMove == 'nożyce' && argPlayerMove == 'kamień')
+  ) {
+    printMessage('Ty wygrywasz!');
   } else {
-    printMessage('Nie wybrałeś od 1-3 gamoniu!');
+    printMessage('Przegrywasz!');
   }
 }
 
-let randomNumber = Math.floor(Math.random() * 3 + 1);
+function playGame(playerInput) {
+  clearMessages(); // Czyści komunikaty
 
-console.log('Wylosowana liczba to: ' + randomNumber);
+  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  let computerMove = getMoveName(randomNumber);
+  let playerMove = getMoveName(playerInput);
 
-let computerMove = getMoveName(randomNumber);
+  printMessage('Mój ruch to: ' + computerMove);
+  printMessage('Twój ruch to: ' + playerMove);
 
-/*
-if(randomNumber == 1){
-  computerMove = 'kamień';
-} else if (randomNumber == 2) {
-  computerMove = 'papier';
-} else if (randomNumber == 3) {
-  computerMove = 'nożyce';
-}
-*/
-
-printMessage('Mój ruch to: ' + computerMove);
-
-/*let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');      DEKLARACJA PLAYER INPUT*/
-
-console.log('Gracz wpisał: ' + playerInput);
-
-let playerMove = getMoveName(playerInput);
-
-/*
-if (playerInput == '1') {
-  playerMove = 'kamień';
-} else if (playerInput == '2') {
-  playerMove = 'papier';
-} else if (playerInput == '3') {
-  playerMove = 'nożyce';
-}
-*/
-
-printMessage('Twój ruch to: ' + playerMove);
-
-// Wywołanie funkcji displayResult zamiast poprzedniego kodu porównującego ruchy
-displayResult(computerMove, playerMove);
-
-/*
-if (computerMove == 'kamień' && playerMove == 'papier') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'papier' && playerMove == 'nożyce') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'nożyce' && playerMove == 'kamień') {
-  printMessage('Ty wygrywasz!');
-} else if (computerMove == 'nożyce' && playerMove == 'papier') {
-  printMessage('Przegrywasz!');
-} else if (computerMove == 'papier' && playerMove == 'kamień') {
-  printMessage('Przegrywasz!');
-} else if (computerMove == 'kamień' && playerMove == 'nożyce') {
-  printMessage('Przegrywasz!');
-} else if (computerMove === playerMove)  {
-  printMessage('Remis!');
-
-{
-  printMessage('Nie wybrałeś od 1-3 gamoniu!');
-}
-*/
-
+  displayResult(computerMove, playerMove);
 }
 
+// Pobranie przycisków
 let playRock = document.getElementById('play-rock');
 let playPaper = document.getElementById('play-paper');
 let playScissors = document.getElementById('play-scissors');
 
-playRock.addEventListener('click', buttonClicked);
+// Przypisanie funkcji do guzików
+playRock.addEventListener('click', function () {
+  playGame(1);
+});
 
+playPaper.addEventListener('click', function () {
+  playGame(2);
+});
 
-playPaper.addEventListener('click', buttonClicked);
-
-
-playScissors.addEventListener('click', buttonClicked);
-
-
-
+playScissors.addEventListener('click', function () {
+  playGame(3);
+});
