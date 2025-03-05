@@ -20,18 +20,19 @@
       }
     };
 
-function playGame(playerInput) {
-  clearMessages(); // Czyści komunikaty
-
-  let randomNumber = Math.floor(Math.random() * 3 + 1);
-  let computerMove = getMoveName(randomNumber);
-  let playerMove = getMoveName(playerInput);
-
-  printMessage('Mój ruch to: ' + computerMove);
-  printMessage('Twój ruch to: ' + playerMove);
-
-  displayResult(computerMove, playerMove);
-}
+    const playGame = (playerInput) => {
+      clearMessages();
+  
+      const randomNumber = Math.floor(Math.random() * 3 + 1);
+      const computerMove = getMoveName(randomNumber);
+      const playerMove = getMoveName(playerInput);
+  
+      printMessage(`Mój ruch to: ${computerMove}`);
+      printMessage(`Twój ruch to: ${playerMove}`);
+  
+      displayResult(computerMove, playerMove);
+    };
+  
 
 // Pobranie przycisków
 let playRock = document.getElementById('play-rock');
