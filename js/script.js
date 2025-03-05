@@ -1,14 +1,10 @@
-function getMoveName(moveNumber) {
-  if (moveNumber == 1) {
-    return 'kamień';
-  } else if (moveNumber == 2) {
-    return 'papier';
-  } else if (moveNumber == 3) {
-    return 'nożyce';
-  } else {
-    return 'nieznany ruch';
-  }
-}
+ {
+    const getMoveName = (moveNumber) => {
+      if (moveNumber === 1) return 'kamień';
+      if (moveNumber === 2) return 'papier';
+      if (moveNumber === 3) return 'nożyce';s
+      return 'nieznany ruch';
+    };
 
 function displayResult(argComputerMove, argPlayerMove) {
   if (argComputerMove == argPlayerMove) {
@@ -54,3 +50,4 @@ playPaper.addEventListener('click', function () {
 playScissors.addEventListener('click', function () {
   playGame(3);
 });
+}
