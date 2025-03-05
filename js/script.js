@@ -2,23 +2,23 @@
     const getMoveName = (moveNumber) => {
       if (moveNumber === 1) return 'kamień';
       if (moveNumber === 2) return 'papier';
-      if (moveNumber === 3) return 'nożyce';s
+      if (moveNumber === 3) return 'nożyce';
       return 'nieznany ruch';
     };
 
-function displayResult(argComputerMove, argPlayerMove) {
-  if (argComputerMove == argPlayerMove) {
-    printMessage('Remis!');
-  } else if (
-    (argComputerMove == 'kamień' && argPlayerMove == 'papier') ||
-    (argComputerMove == 'papier' && argPlayerMove == 'nożyce') ||
-    (argComputerMove == 'nożyce' && argPlayerMove == 'kamień')
-  ) {
-    printMessage('Ty wygrywasz!');
-  } else {
-    printMessage('Przegrywasz!');
-  }
-}
+    const displayResult = (argComputerMove, argPlayerMove) => {
+      if (argComputerMove === argPlayerMove) {
+        printMessage('Remis!');
+      } else if (
+        (argComputerMove === 'kamień' && argPlayerMove === 'papier') ||
+        (argComputerMove === 'papier' && argPlayerMove === 'nożyce') ||
+        (argComputerMove === 'nożyce' && argPlayerMove === 'kamień')
+      ) {
+        printMessage('Ty wygrywasz!');
+      } else {
+        printMessage('Przegrywasz!');
+      }
+    };
 
 function playGame(playerInput) {
   clearMessages(); // Czyści komunikaty
